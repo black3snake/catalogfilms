@@ -1,0 +1,82 @@
+@import "variables";
+
+.header {
+  background-color: #d5d8db;
+
+  .container {
+    display: flex;
+    align-items: center;
+    .header__logo {
+      display: inline-block;
+      width: 102px;
+      height: 24px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      padding: 7px 0;
+      //background-color: $color-back;
+    }
+
+    .header__content {
+      display: flex;
+      flex: 1;
+      align-items: center;
+      justify-content: space-between;
+      padding: 7px 0;
+      font-family: Montserrat, sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+
+      .header__menu {
+        margin: 0 100px;
+
+        nav ul {
+          display: flex;
+          align-items: center;
+          gap: 50px;
+          margin: 0;
+          padding: 0;
+
+          li {
+            list-style: none;
+          }
+
+          a {
+            color: $color-main;
+            cursor: pointer;
+            text-decoration: none;
+
+            &:hover {
+              color: $color-blue;
+            }
+
+            &.active {
+              color: $color-blue;
+            }
+          }
+        }
+      }
+
+      .header__login {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 10px;
+        .header__login_image {
+          height: 36px;
+          width: 36px;
+          cursor: pointer;
+          img {
+          border-radius: 50%;
+          border: 0;
+            width: 100%;
+          };
+        }
+        .header__login_name {
+          color: $color-main;
+        }
+      }
+
+    }
+  }
+}

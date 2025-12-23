@@ -1,7 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import {LayoutComponent} from "./views/layout/layout/layout.component";
+import {MainComponent} from "./views/main/main.component";
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: '',
+    component: LayoutComponent,
+    children: [
+      {path: '', component: MainComponent},
+      // {path: '', loadChildren:() => import('./views/user/user.module').then(m => m.UserModule), canActivate: [authForwardGuard]},
+      // {path: '', loadChildren:() => import('./views/article/article.module').then(m => m.ArticleModule)},
+
+    ]
+
+  },
+  {path: '**', redirectTo: ''}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
