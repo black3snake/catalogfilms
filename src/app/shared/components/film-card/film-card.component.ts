@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {FilmType} from "../../../../types/film.type";
 
 @Component({
   selector: 'app-film-card',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./film-card.component.scss']
 })
 export class FilmCardComponent {
+  @Input() film!: FilmType
 
 }

@@ -7,6 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainComponent } from './views/main/main.component';
 import { LayoutComponent } from './views/layout/layout/layout.component';
 import { HeaderComponent } from './views/header/header.component';
+import {SharedModule} from "./shared/shared.module";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -15,11 +17,13 @@ import { HeaderComponent } from './views/header/header.component';
     LayoutComponent,
     HeaderComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule
-  ],
+    imports: [
+        HttpClientModule,
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        SharedModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

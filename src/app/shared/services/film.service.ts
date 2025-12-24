@@ -2,8 +2,9 @@ import {inject, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {ActiveParamsType} from "../../../types/active-params.type";
 import {FilmType} from "../../../types/film.type";
-import {Observable} from "rxjs";
+import {map, Observable, of, switchMap} from "rxjs";
 import {environment} from "../../../environments/environment";
+import {CategoryType} from "../../../types/category.type";
 
 @Injectable({
   providedIn: 'root'
@@ -12,16 +13,45 @@ export class FilmService {
 
   private http = inject(HttpClient);
 
-  getFilms(params: ActiveParamsType): Observable<{totalCount: number, pages: number, items: FilmType[]}> {
-    return this.http.get<{totalCount: number, pages: number, items: FilmType[]}>(environment.apiUrl + 'films', {
-      params: params
+  //http://localhost:3000/films?_expand=category
+  getFilms(params: ActiveParamsType): Observable<FilmType[]> {
+    return this.http.get<FilmType[]>(environment.apiUrl + 'films', {
+      params: {
+        ...params,
+        _expand: "category",
+      }
     });
   }
 
-  getFilm(url: string): Observable<FilmType> {
-    return this.http.get<FilmType>(environment.apiUrl + 'films', {
-      params: { url: url }
-    });
+  // getFilm(url: string): Observable<FilmType> {
+  //   return this.http.get<FilmType>(environment.apiUrl + 'films', {
+  //     params: { url: url }
+  //   });
+  // }
+
+  //http://localhost:3000/films?url=bezuprechnyy-mir&_expand=category
+  getFilmByUrl(url: string): Observable<FilmType> {
+    return this.http.get<FilmType[]>(
+      `${environment.apiUrl}films?url=${url}&_expand=category`
+    ).pipe(
+      map(films => films[0]) // Берем первый элемент
+    );
+  }
+
+  getFilmsByCategoryUrl(categoryUrl: string): Observable<FilmType[]> {
+    return this.http.get<CategoryType[]>(
+      `${environment.apiUrl}categories?url=${categoryUrl}`
+    ).pipe(
+      switchMap(categories => {
+        if (categories.length === 0) {
+          return of([]);
+        }
+        const categoryId = categories[0].id;
+        return this.http.get<FilmType[]>(
+          `${environment.apiUrl}films?categoryId=${categoryId}&_expand=category`
+        );
+      })
+    );
   }
 
 }

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FilmCardComponent } from './components/film-card/film-card.component';
+import {RouterLink} from "@angular/router";
 
 
 @NgModule({
@@ -8,7 +9,11 @@ import { FilmCardComponent } from './components/film-card/film-card.component';
     FilmCardComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterLink
+  ],
+  exports: [
+    FilmCardComponent,
   ]
 })
 export class SharedModule { }

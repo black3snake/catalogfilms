@@ -1,0 +1,20 @@
+{
+  "categories": [
+    {"id": "cat-1", "name": "Фильм", "url": "film"},
+    {"id": "cat-2", "name": "Сериал", "url": "series"}
+  ],
+  "films": [
+    {
+      "id": "film-1",
+      "title": "Добыча",
+      "categoryId": "cat-1",
+      "url": "dobycha"
+    },
+    {
+      "id": "film-2",
+      "title": "Игра в кальмара",
+      "categoryId": "cat-2",
+      "url": "squid-game"
+    }
+  ]
+}
