@@ -1,22 +1,27 @@
 @import "variables";
 .films__item {
   position: relative;
-  width: 291px;
+  cursor: pointer;
+  width: 280px;
   .films__item-image {
     width: 100%;
-    height: 291px;
+    height: 400px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 5px;
+    transition: all 0.3s ease;
+    &:hover {
+      filter: brightness(110%) saturate(130%);
+    }
   }
   .films__item-category {
     position: absolute;
     top: 10px;
     right: 10px;
-    padding: 10px 18px;
+    padding: 7px 14px;
     border: none;
-    border-radius: 5px;
+    border-radius: 3px;
     text-align: center;
     color: $color-blue;
     font-size: 11px;
@@ -28,37 +33,26 @@
   .films__item-footer {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: 265px;
+    //justify-content: space-between;
+    height: 80px;
     margin-top: 15px;
     font-family: Montserrat, sans-serif;
-    .films__item-footer-top {
       .films__item-footer-title {
         color: $color-blue;
         font-size: 20px;
         font-weight: 500;
         line-height: 26px;
-        margin-bottom: 20px;
+        margin-bottom: 5px;
         max-height: 78px;
         overflow: hidden;
       }
 
-      .films__item-footer-text {
+      .films__item-footer-year {
         color: $color-main;
-        font-size: 14px;
+        font-size: 18px;
         font-weight: 400;
-        line-height: 18.20px;
-        margin-bottom: 20px;
-        max-height: 128px;
+        max-height: 20px;
         overflow: hidden;
       }
-    }
-    a {
-      color: $color-blue;
-      font-size: 16px;
-      font-weight: 400;
-      text-decoration: underline;
-      text-decoration-skip-ink: none
-    }
   }
 }

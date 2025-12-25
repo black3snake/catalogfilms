@@ -1,11 +1,8 @@
 <div *ngIf="film" class="films__item">
   <div class="films__item-image" [style.background-image]="'url(/assets/images/logofilm/' + film.image +')'"></div>
-  <span class="films__item-category">{{film.categoryId}}</span>
+  <span class="films__item-category">{{ film.category?.name }}</span>
   <div class="films__item-footer">
-    <div class="films__item-footer-top">
-      <div class="films__item-footer-title">{{film.title}}</div>
-      <div class="films__item-footer-text">{{film.description}}</div>
-    </div>
-    <a [routerLink]="'/films/' + film.url">Читать дальше</a>
+    <div class="films__item-footer-title">{{ film.title }}</div>
+    <div class="films__item-footer-year">{{ film.year }}</div>
   </div>
 </div>

@@ -6,13 +6,13 @@
         <nav>
           <ul>
             <li>
-              <a routerLink="/" >Фильмы</a>
+              <a routerLink="/films" [queryParams]="{_expand: 'category', categoryId: 1}" [class.active]="isActive(1)">Фильмы</a>
             </li>
             <li>
-              <a routerLink="/">Сериалы</a>
+              <a routerLink="/films" [queryParams]="{_expand: 'category', categoryId: 2}" [class.active]="isActive(2)">Сериалы</a>
             </li>
             <li>
-              <a routerLink="/">Мультфильмы</a>
+              <a routerLink="/films" [queryParams]="{_expand: 'category', categoryId: 3}" [class.active]="isActive(3)">Мультфильмы</a>
             </li>
           </ul>
         </nav>

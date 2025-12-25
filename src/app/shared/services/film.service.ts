@@ -10,24 +10,14 @@ import {CategoryType} from "../../../types/category.type";
   providedIn: 'root'
 })
 export class FilmService {
-
   private http = inject(HttpClient);
 
-  //http://localhost:3000/films?_expand=category
+  //http://localhost:3000/films?_expand=category (categoryId,page)
   getFilms(params: ActiveParamsType): Observable<FilmType[]> {
     return this.http.get<FilmType[]>(environment.apiUrl + 'films', {
-      params: {
-        ...params,
-        _expand: "category",
-      }
+      params: params
     });
   }
-
-  // getFilm(url: string): Observable<FilmType> {
-  //   return this.http.get<FilmType>(environment.apiUrl + 'films', {
-  //     params: { url: url }
-  //   });
-  // }
 
   //http://localhost:3000/films?url=bezuprechnyy-mir&_expand=category
   getFilmByUrl(url: string): Observable<FilmType> {
@@ -52,6 +42,11 @@ export class FilmService {
         );
       })
     );
+  }
+
+  //http://localhost:3000/categories/1
+  getCategoryByFilm(id: number): Observable<CategoryType> {
+    return this.http.get<CategoryType>(`${environment.apiUrl}categories/${id}`)
   }
 
 }
