@@ -1,6 +1,8 @@
 import {Component, inject, Input, OnInit} from '@angular/core';
 import {FilmType} from "../../../../types/film.type";
-import {FilmService} from "../../services/film.service";
+import {MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {PopupCardComponent} from "../popup-card/popup-card.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-film-card',
@@ -8,19 +10,28 @@ import {FilmService} from "../../services/film.service";
   styleUrls: ['./film-card.component.scss']
 })
 export class FilmCardComponent implements OnInit{
-  // private filmService = inject(FilmService);
+  private dialog = inject(MatDialog);
+  private router = inject(Router);
+
   @Input() film!: FilmType
-  // categoryName = '';
+  dialogRef: MatDialogRef<any> | null = null;
 
   ngOnInit(): void {
-    // console.log(this.film);
-
-    // this.filmService.getCategoryByFilm(this.film.categoryId)
-    //   .subscribe(data => {
-    //     this.categoryName = data.name;
-    //   })
 
   }
 
+  moreDetails(film: FilmType) {
+    this.dialogRef = this.dialog.open(PopupCardComponent, {
+      data: {
+        ...film
+      },
+    });
+
+    this.dialogRef.backdropClick()
+      .subscribe(() => {
+        this.dialogRef?.close();
+        // this.router.navigate(['/']);
+      });
+  }
 
 }

@@ -9,6 +9,7 @@ export type FilmType = {
   description: string,
   image: string,
   url: string,
+  imdb: string,
   category?: {
     id: number,
     name: string,

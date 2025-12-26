@@ -1,0 +1,24 @@
+<div class="main__popup">
+  <div class="main__popup_close" (click)="closePopup()">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="1.93562" y1="2.6499" x2="13.9564" y2="14.6707" stroke="#A8ABA7" stroke-linecap="round"/>
+      <line x1="13.9238" y1="2.62971" x2="1.90301" y2="14.6505" stroke="#A8ABA7" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <div class="main__popup_body">
+    <div class="main__popup_image">
+      <img src="{{'/assets/images/logofilm/' + data.image}}" alt="film image">
+    </div>
+    <div class="main__popup_content">
+      <div class="main__popup_title">{{ data.title }}</div>
+      <div class="main__popup_year">год: {{ data.year }}</div>
+      <div class="main__popup_genre">жанр: {{ data.genre }}</div>
+      <div class="main__popup_description">{{ data.description | strLimiter: 170 }}</div>
+    </div>
+  </div>
+  <div class="main__popup_score">
+    <span>
+      imDb: {{ data.imdb }}
+    </span>
+  </div>
+</div>

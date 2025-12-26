@@ -9,11 +9,10 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [
       {path: '', component: MainComponent},
+      // Lazy Loading for feature
       // {path: '', loadChildren:() => import('./views/user/user.module').then(m => m.UserModule), canActivate: [authForwardGuard]},
-      // {path: '', loadChildren:() => import('./views/article/article.module').then(m => m.ArticleModule)},
-
+      // {path: '', loadChildren:() => import('./views/derail/derail.module').then(m => m.DetailModule)},
     ]
-
   },
   {path: '**', redirectTo: ''}
 ];

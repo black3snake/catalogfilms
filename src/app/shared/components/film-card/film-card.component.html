@@ -1,4 +1,4 @@
-<div *ngIf="film" class="films__item">
+<div *ngIf="film" class="films__item" (click)="moreDetails(film)">
   <div class="films__item-image" [style.background-image]="'url(/assets/images/logofilm/' + film.image +')'"></div>
   <span class="films__item-category">{{ film.category?.name }}</span>
   <div class="films__item-footer">
