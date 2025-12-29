@@ -2,17 +2,20 @@
 
 .main {
   padding: 30px 0;
+
   .container {
     .main__header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 10px;
+
       .main__header_title {
         font-size: 32px;
         font-weight: 600;
         color: $color-main;
       }
+
       .main__header_action {
         input {
           width: 260px;
@@ -22,18 +25,74 @@
           outline: none;
           border-radius: 5px;
           border: 1px solid $color-main;
+
           &::placeholder {
             color: $color-blue;
           }
         }
       }
     }
+
     .main__catalog {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
       gap: 20px 10px;
+    }
+  }
+}
+
+@media screen and (max-width: 1229px) {
+  .main {
+    padding: 30px 20px;
+  }
+}
+
+@media screen and (max-width: 1190px) {
+  .main {
+    .container {
+      .main__catalog {
+        justify-content: center;
+        gap: 20px 25px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 625px) {
+  .main {
+    .container {
+      .main__header {
+        .main__header_title {
+          font-size: 24px;
+        }
+
+        .main__header_action {
+          input {
+            width: 160px;
+            padding: 7px;
+            font-size: 12px;
+          }
+        }
+
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 441px) {
+  .main {
+    .container {
+      .main__header {
+        //align-items: flex-start;
+        flex-direction: column;
+
+        .main__header_title {
+          font-size: 20px;
+          margin-bottom: 5px;
+        }
+      }
     }
   }
 }

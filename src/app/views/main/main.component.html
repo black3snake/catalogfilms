@@ -1,13 +1,24 @@
 <section class="main">
   <div class="container">
     <div class="main__header">
-      <div class="main__header_title">Каталог фильмов</div>
+      <div class="main__header_title">{{ (showedSearch && filteredFilms.length > 0) ? 'Найдено фильмов: ' + filteredFilms.length :'Каталог фильмов' }}</div>
       <div class="main__header_action">
-        <input type="text" placeholder="Поиск фильмов..." (change)="searchFilm()">
+        <input type="text" placeholder="Поиск фильмов..." name="" id="" [formControl]="searchField">
       </div>
     </div>
     <div class="main__catalog">
-      <app-film-card *ngFor="let film of films" [film]="film"></app-film-card>
+      <ng-container *ngIf="showedSearch && filteredFilms.length > 0">
+        <app-film-card *ngFor="let film of filteredFilms" [film]="film"></app-film-card>
+      </ng-container>
+
+      <div *ngIf="valueQuantity > 0 && filteredFilms.length === 0 && !showedSearch" class="no-results">
+        По вашему запросу ничего не найдено
+      </div>
+
+      <ng-container *ngIf="!showedSearch && valueQuantity === 0">
+        <app-film-card *ngFor="let film of films" [film]="film"></app-film-card>
+      </ng-container>
+
     </div>
   </div>
 </section>

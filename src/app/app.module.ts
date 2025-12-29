@@ -9,6 +9,11 @@ import { LayoutComponent } from './views/layout/layout/layout.component';
 import { HeaderComponent } from './views/header/header.component';
 import {SharedModule} from "./shared/shared.module";
 import {HttpClientModule} from "@angular/common/http";
+import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from "@angular/material/snack-bar";
+import {FormControl, FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {MatMenuModule} from "@angular/material/menu";
+import {MatIconModule} from "@angular/material/icon";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -19,12 +24,19 @@ import {HttpClientModule} from "@angular/common/http";
   ],
     imports: [
         HttpClientModule,
+        MatSnackBarModule,
+        MatMenuModule,
+        MatIconModule,
+        MatButtonModule,
+        ReactiveFormsModule,
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
         SharedModule
     ],
-  providers: [],
+  providers: [
+    {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

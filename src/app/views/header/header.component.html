@@ -1,18 +1,27 @@
 <header class="header">
   <div class="container">
-    <a routerLink="/" class="header__logo" [style.background-image]="'url(/assets/images/logo2.svg)'"></a>
+    <div class="header__logo">
+      <a routerLink="/" class="header__logo_link" [style.background-image]="'url(/assets/images/logo2.svg)'"
+         (click)="onLogoClick()"></a>
+    </div>
     <div class="header__content">
       <div class="header__menu">
         <nav>
           <ul>
             <li>
-              <a routerLink="/films" [queryParams]="{_expand: 'category', categoryId: 1}" [class.active]="isActive(1)">Фильмы</a>
+              <a routerLink="/films" [queryParams]="{_expand: 'category', categoryId: 1}" [class.active]="isActive(1)">
+                Фильмы
+              </a>
             </li>
             <li>
-              <a routerLink="/films" [queryParams]="{_expand: 'category', categoryId: 2}" [class.active]="isActive(2)">Сериалы</a>
+              <a routerLink="/films" [queryParams]="{_expand: 'category', categoryId: 2}" [class.active]="isActive(2)">
+                Сериалы
+              </a>
             </li>
             <li>
-              <a routerLink="/films" [queryParams]="{_expand: 'category', categoryId: 3}" [class.active]="isActive(3)">Мультфильмы</a>
+              <a routerLink="/films" [queryParams]="{_expand: 'category', categoryId: 3}" [class.active]="isActive(3)">
+                Мультфильмы
+              </a>
             </li>
           </ul>
         </nav>
@@ -23,8 +32,25 @@
         </div>
         <div class="header__login_name">Пользователь</div>
       </div>
+      <div class="header__action">
+        <button matIconButton [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>done_outline</mat-icon>
+            <a routerLink="/films" [queryParams]="{_expand: 'category', categoryId: 1}">Фильмы</a>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>done_outline</mat-icon>
+            <a routerLink="/films" [queryParams]="{_expand: 'category', categoryId: 2}">Сериалы</a>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>done_outline</mat-icon>
+            <a routerLink="/films" [queryParams]="{_expand: 'category', categoryId: 3}">Мультфильмы</a>
+          </button>
+        </mat-menu>
+      </div>
     </div>
-
-
   </div>
 </header>

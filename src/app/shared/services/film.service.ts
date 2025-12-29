@@ -2,7 +2,7 @@ import {inject, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {ActiveParamsType} from "../../../types/active-params.type";
 import {FilmType} from "../../../types/film.type";
-import {map, Observable, of, switchMap} from "rxjs";
+import {catchError, map, Observable, of, switchMap} from "rxjs";
 import {environment} from "../../../environments/environment";
 import {CategoryType} from "../../../types/category.type";
 
@@ -48,5 +48,29 @@ export class FilmService {
   getCategoryByFilm(id: number): Observable<CategoryType> {
     return this.http.get<CategoryType>(`${environment.apiUrl}categories/${id}`)
   }
+
+  // запрос для поиска на база запроса всех фильмов
+  searchFilms(query: string): Observable<FilmType[]> {
+    if (!query || query.trim() === '') {
+      return this.getFilms({_expand: "category"});
+    }
+    const searchTerm = query.trim().toLowerCase();
+    return this.http.get<FilmType[]>(environment.apiUrl + 'films', {params:{_expand: "category"}}).pipe(
+      map(films =>
+        films.filter(film =>
+          film.title.toLowerCase().includes(searchTerm) ||
+          film.genre.toLowerCase().includes(searchTerm) ||
+          film.director.toLowerCase().includes(searchTerm) ||
+          film.year.toString().includes(searchTerm) ||
+          film.imdb.toString().includes(searchTerm)
+        )
+      ),
+      catchError(error => {
+        console.error('Search error:', error);
+        return of([]);
+      })
+    );
+  }
+
 
 }

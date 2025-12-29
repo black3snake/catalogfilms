@@ -56,3 +56,28 @@
       }
   }
 }
+
+@media screen  and (max-width : 930px) {
+  .films__item {
+    width: 240px;
+    .films__item-image {
+      height: 340px;
+    }
+    .films__item-category {
+
+    }
+    .films__item-footer {
+      margin-top: 5px;
+      height: 60px;
+      .films__item-footer-title {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 0;
+        line-height: unset;
+      }
+      .films__item-footer-year {
+        font-size: 16px;
+      }
+    }
+  }
+}
