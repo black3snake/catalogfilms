@@ -162,17 +162,23 @@
     {
       "id": 1,
       "name": "Фильм",
-      "url": "film"
+      "url": "film",
+      "route": "/films",
+      "queryParams": { "_expand": "category", "categoryId": 1 }
     },
     {
       "id": 2,
       "name": "Сериал",
-      "url": "series"
+      "url": "series",
+      "route": "/films",
+      "queryParams": { "_expand": "category", "categoryId": 2 }
     },
     {
       "id": 3,
       "name": "Мультфильм",
-      "url": "cartoon"
+      "url": "cartoon",
+      "route": "/films",
+      "queryParams": { "_expand": "category", "categoryId": 3 }
     }
   ]
 }

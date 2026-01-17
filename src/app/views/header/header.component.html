@@ -8,19 +8,11 @@
       <div class="header__menu">
         <nav>
           <ul>
-            <li>
-              <a routerLink="/films" [queryParams]="{_expand: 'category', categoryId: 1}" [class.active]="isActive(1)">
-                Фильмы
-              </a>
-            </li>
-            <li>
-              <a routerLink="/films" [queryParams]="{_expand: 'category', categoryId: 2}" [class.active]="isActive(2)">
-                Сериалы
-              </a>
-            </li>
-            <li>
-              <a routerLink="/films" [queryParams]="{_expand: 'category', categoryId: 3}" [class.active]="isActive(3)">
-                Мультфильмы
+            <li *ngFor="let item of categories">
+              <a [routerLink]="item.route"
+                 [queryParams]= "item.queryParams"
+                 [class.active]="activeCategoryId === item.id">
+                {{item.name}}
               </a>
             </li>
           </ul>

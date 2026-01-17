@@ -48,6 +48,10 @@ export class FilmService {
   getCategoryByFilm(id: number): Observable<CategoryType> {
     return this.http.get<CategoryType>(`${environment.apiUrl}categories/${id}`)
   }
+  //http://localhost:3000/categories/
+  getCategory(): Observable<CategoryType[]> {
+    return this.http.get<CategoryType[]>(`${environment.apiUrl}categories`)
+  }
 
   // запрос для поиска на база запроса всех фильмов
   searchFilms(query: string): Observable<FilmType[]> {
